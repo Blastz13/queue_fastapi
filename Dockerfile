@@ -10,4 +10,4 @@ COPY . ./
 
 RUN pip3 install --no-cache-dir --upgrade -r /var/www/requirements.txt
 
-CMD ["alembic", "upgrade", "head"]
+RUN #alembic upgrade head

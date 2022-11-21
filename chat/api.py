@@ -46,6 +46,6 @@ async def websocket_endpoint(websocket: WebSocket, queue_room_id: int, client_to
 async def get_all_chat_rooms(queue_id: int):
     collection = database[str(queue_id)]
     messages = []
-    async for document in collection.find().sort("_id", -1).limit(10):
+    async for document in collection.find().sort("_id", -1).limit(20):
         messages.append(message_serializer(document))
     return messages

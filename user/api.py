@@ -8,7 +8,7 @@ from fastapi.encoders import jsonable_encoder
 
 from queue_room.models import User
 from user.jwt_handler import sign_jwt
-
+from user.jwt_bearer import JwtBearer, get_current_user
 from .schemas import *
 from db import get_db
 
@@ -33,3 +33,9 @@ async def login(user: UserLogin, db: Session = Depends(get_db)):
         return jsonable_encoder(sign_jwt(db_user.id))
     else:
         raise HTTPException(status_code=400, detail="Invalid username or password")
+
+
+@user_router.get('/profile', response_model=UserProfileRead)
+async def login(user: get_current_user = Depends()):
+    current_user = User.get_or_404(user["user_id"])
+    return current_user
