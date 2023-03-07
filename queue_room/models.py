@@ -43,6 +43,9 @@ class Queue(Base):
 
     @classmethod
     def all(cls):
+        """
+
+        """
         return db.query(cls).all()
 
     @classmethod

@@ -13,9 +13,15 @@ def token_response(token: str):
 
 
 def sign_jwt(user_id: int):
+    """Create a jwt encoded token for user authorization
+
+    :param user_id:  The user identifier
+
+    :return: Json with JWT token.
+    """
     payload = {
         "user_id": user_id,
-        "expires": time.time() + 600*600
+        "expires": time.time() + 600 * 600
     }
     token = jwt.encode(payload, JWT_SECRET, algorithm=JWT_ALGORITHM)
     return token_response(token)

@@ -117,3 +117,7 @@ GitHub.sublime-settings
 .history
 
 .DS_Store
+
+_static
+_templates
+*.doctree
